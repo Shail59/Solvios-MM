@@ -1,13 +1,18 @@
 package mindFullMarket.module1;
 
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
 import mindFullMarket.utility.MyLibrary;
 
 public class ValidateSignIN extends ParentModule1 {
 	
-	public void testUpdateme() {
+	@Test(dataProvider = "getTestData")
+	
+	public void testUpdateme(String email, String pass) {
 		
 		driver.get(sitedata.getProperty("url"));
-		MyLibrary.signIn("jigesh@sjainfosolutions.com", "aakash104");
+		MyLibrary.signIn(email, pass);
 		
 		boolean checkReasult;
 		
@@ -35,6 +40,21 @@ public class ValidateSignIN extends ParentModule1 {
 		
 		
 	}
+	
+	
+	@DataProvider
+	
+	public Object[][] getTestData() {
+		
+		return MyLibrary.getTestDataFromXLSX(module1, "ValidateSignIn");
+		
+		
+	}
+	
+	
+	
+	
+	
 	
 	
 	

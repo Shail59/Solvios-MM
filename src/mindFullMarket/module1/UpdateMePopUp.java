@@ -1,34 +1,25 @@
 package mindFullMarket.module1;
 
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
 import mindFullMarket.utility.MyLibrary;
 
-public class UpdateMePopUp extends ParentModule1 {
 
-	public void testValidateUser() {
+public class UpdateMePopUp extends ParentModule1 {
+	
+	@Test(dataProvider = "getTestData")
+
+	public void testValidateUser(String name, String email) {
 		
 		driver.get(sitedata.getProperty("url"));
 		
-		try {
+				
+			isElementPresent("ip_name_xpath").sendKeys(name);
 			
-			isElementPresent("ip_name_xpath").sendKeys("");
-			
-		}catch (Exception e) {
-			
-			System.out.println("Enter valid Name");
-			
-		}  
 		
-
-		try {
+			isElementPresent("ip_emailpop_id").sendKeys(email);
 			
-			isElementPresent("ip_emailpop_id").sendKeys("");
-			
-		}catch (Exception e) {
-			
-			System.out.println("Enter valid Email");
-			
-		}
-		
 		
 
 		try {
@@ -42,13 +33,20 @@ public class UpdateMePopUp extends ParentModule1 {
 		}
 		
 		
-		
-		
-		
-		
-		
-		
-		
 	}	
+	
+	
+	@DataProvider
+	public Object[][] getTestData() {
+		
+		return MyLibrary.getTestDataFromXLSX(module1, "UpdateMePopUp");
+		
+		
+	}
+	
+	
+	
+	
+	
 	
 }

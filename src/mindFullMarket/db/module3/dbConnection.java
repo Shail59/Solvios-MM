@@ -19,13 +19,10 @@ public class dbConnection {
 		
 	}catch (Exception e) {
 		
-		
+		System.out.println("Some thing goes wrong with DB");
 		
 	}
 	
-	
-}
-	
-	
+}	
 	
 
